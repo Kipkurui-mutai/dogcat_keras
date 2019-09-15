@@ -68,7 +68,7 @@ def down_fr_url(urls: list, save_dir: str='', unzip: bool=False):
             save_path = os.path.join(save_dir, fn)
             
             print('Downloading {} ...'.format(fn))
-            urlretrieve(url, save_path, reporthook=progress)
+            urlretrieve(url, save_path)
             print('\n')
             if unzip:
                 print('Extracting file ...')
