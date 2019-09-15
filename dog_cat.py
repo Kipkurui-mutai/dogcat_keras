@@ -79,7 +79,7 @@ def train(dir: str, im_size: tuple, pretrained_checkpoint=None, **kwargs):
         class_mode='binary')
     print(train_generator.class_indices)
     model = DogCat(im_size)
-    if pretrained_checkpoint is not None:
+    if pretrained_checkpoint:
         assert isinstance(pretrained_checkpoint, str)
         model.net.load_weights(pretrained_checkpoint)
     model._fit(train_generator, **kwargs)
