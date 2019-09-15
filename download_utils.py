@@ -62,16 +62,13 @@ def time_format(secs: int):
 
 
 def down_fr_url(urls: list, save_dir: str='', unzip: bool=False):
-    
     for url in urls:
         try:
             fn = retri_fn_url(url)
             save_path = os.path.join(save_dir, fn)
-            if os.path.exists(save_path) and os.path.getsize(save_path) >= retri_file_size(url):
-                print('{} already exists.'.format(save_path))
-                continue
+            
             print('Downloading {} ...'.format(fn))
-            urlretrieve(url, save_path)
+            urlretrieve(url, save_path, reporthook=progress)
             print('\n')
             if unzip:
                 print('Extracting file ...')
