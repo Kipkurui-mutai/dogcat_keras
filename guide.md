@@ -33,7 +33,7 @@ Let's first create a new repository in your Github account:
 
 <img src='images/newrepo.png' width='200'/>
 
-* Enter "dogcat_keras" as your project name.
+* Enter "dogcat_keras" as your repository name.
 * Leave other options blank as they are not necessary.
 
 Now copy the URL link of your project: it should be something like: [https://github.com/your_name/dogcat_keras](https://github.com/your_name/dogcat_keras)
@@ -64,7 +64,9 @@ Then populate your remote project with the local files by typing:
 git push origin master
 ```
 
-If you refresh your project page on Github, it should now show differently as you're able to see your newly uploaded local files.
+You will be asked to enter your credentials for this action, as GitHub wants to be sure if you're granted rights to do so. 
+
+Once done, you can refresh your project page on Github, it should now show differently as you're able to see your newly uploaded local files.
 
 Now let's make some small changes first to see how `git` works:
 
