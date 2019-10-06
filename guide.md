@@ -21,12 +21,27 @@ For basic `bash` commands, please consult [link](https://files.fosswire.com/2007
 
 Please follow steps [here](https://www.linode.com/docs/development/version-control/how-to-install-git-on-linux-mac-and-windows/) to have  `git` in your machine. (Linux/Mac/Windows).
 
+Next, let's go to [https://github.com](https://github.com) to create your personal account, I'll say, `your_name` for example. Once you finish, move to the next part.
+
 ## Step by step
 
-Let's first download this small project to your machine. Though `GitHub` comes along with a graphical user interface that'll let you download by clicking some buttons, we'll do it the traditional `git` way with command lines:
+Let's first create a new repository in your Github account:
+
+* Go to https://github.com/your_name
+* Click on plus sign, then choose "New repository".
+
+
+<img src='images/newrepo.png' width='200'/>
+
+* Enter "dogcat_keras" as your project name.
+* Leave other options blank as they are not necessary.
+
+Now copy the URL link of your project: it should be something like: [https://github.com/your_name/dogcat_keras](https://github.com/your_name/dogcat_keras)
+
+Next, let's download this small project to your machine. Though `GitHub` comes along with a graphical user interface that'll let you download by clicking some buttons, we'll do it the traditional `git` way with command lines:
 
 ```bash
-git clone https://github.com/theaiinstitute/dogcat_keras
+git clone https://github.com/winlp4ever/dogcat_keras
 ```
 You'll see a new folder named `dogcat_keras` is created. Go to that folder:
 
@@ -34,7 +49,24 @@ You'll see a new folder named `dogcat_keras` is created. Go to that folder:
 cd dogcat_keras/
 ```
 
-Here you can see that the folder is not empty. It does contain all the files we'll work on already. Now let's make some small changes first to see how `git` works:
+Here you can see that the folder is not empty. It does contain all the files we'll work on already. 
+
+Now (assume you're inside this folder), we'll replace the remote project link by yours. Type:
+
+```bash
+git remote rm origin
+git remote add origin https://github.com/your_name/dogcat_keras
+```
+
+Then populate your remote project with the local files by typing:
+
+```bash
+git push origin master
+```
+
+If you refresh your project page on Github, it should now show differently as you're able to see your newly uploaded local files.
+
+Now let's make some small changes first to see how `git` works:
 
 Go to `download_utils.py`, modify the line 
 
@@ -56,7 +88,7 @@ If you add a new file, namely `test.py` for example, the above command will prin
 
 <img src='images/gitstatus_.png' width='600'>
 
-, which indicates `test.py` is untracked. To track untracked files or record updates (sometime both), type:
+, which indicates `test.py` is untracked. To track untracked files or record updates (sometimes both), type:
 
 ```bash
 git add . # . stands for every changes, change to specified files for better versioning
@@ -97,11 +129,11 @@ Now if you re-type `git log`, you won't see all the change commits behind the co
 
 ### Git branching
 
-Now `git` is a version control system, so `branching` is inevitable, as it's in fact the core idea behind the whole `versioning`. A brach is a version/state of your project. Along a project's development, different branches may share some initial state, then diverge from a moment, and finally re-merge to become one at some future moment. Such a _multiverse_ structure allows people to work on different directions, problems in parallel, at the meantime not too far from the base. 
+Now `git` is a version control system, so `branching` is inevitable, as it's in fact the core idea behind the whole `versioning`. A branch is a version/state of your project. Along a project's development, different branches may share some initial state, then diverge from a moment, and finally re-merge to become one at some future moment. Such a _multiverse_ structure allows people to work on different directions, problems in parallel, at the meantime not too far from the base. 
 
 <img src='images/gitbranch.png' width='600'>
 
-Type `git branch` to get list of all existed branches. The `master` branch is the principal public branch that should be the project final end. You can switch to a branch with `git checkout <branch-name>`. As there is no other branch except `master` in our project, let's create a new one:
+Type `git branch` to get list of all existing branches. The `master` branch is the principal public branch that should be the project final end. You can switch to a branch with `git checkout <branch-name>`. As there is no other branch except `master` in our project, let's create a new one:
 
 ```bash
 git checkout -b dev
@@ -173,7 +205,7 @@ git push origin dev #or master, depends on which remote branch you want to push 
 ```
 ### Conflicts and resolve
 
-Imagine this situation, one of our teammate also sees another unexpected behavior of `down_fr_url(...)`, that is, even if the file already exists, typing the command above will reforce the entire download. Therefore, he, working on `master` branch, decides to add a small piece of code to the function:
+Imagine this situation, one of our teammates also sees another unexpected behavior of `down_fr_url(...)`, that is, even if the file already exists, typing the command above will re-force the entire download. Therefore, he, working on `master` branch, decides to add a small piece of code to the function:
 
 ```python
 if os.path.exists(save_path) and os.path.getsize(save_path)>=retri_file_size   (url):
@@ -183,7 +215,7 @@ if os.path.exists(save_path) and os.path.getsize(save_path)>=retri_file_size   (
 
 After done with his works, he proudly push it to the master branch. And we, after feeling satisfied with our changes in branch `dev`, decide that would be a moment to merge it to the `master` branch. Conflicts occur, as we and him both made changes in the same file. 
 
-If you want to merge locally: you have to reswitch to `master` brach:
+If you want to merge locally: you have to re-switch to `master` branch:
 
 ```bash
 git checkout master
@@ -196,12 +228,12 @@ If you want to do such a pull request on `GitHub`, which is the main way how peo
 
 <img src='images/pullrequest.png' width='800' />
 
-Then `git` will re-examine the both codes, if there's any conflict, they'll invite you to resolve it (choose which part which brach), otherwise, you'll see:
+Then `git` will re-examine the both codes, if there's any conflict, they'll invite you to resolve it (choose which part which branch), otherwise, you'll see:
 
 <img src='images/goodtogo.png' width='800' />
 
 ## Some remarks
 
-`git` is a pretty easy, must-use tool to learn. As usual, the best way you learn it is through practices, so you should get along with it in your projects from onwards.
+`git` is a pretty easy, must-use tool to learn. As usual, the best way to learn it is through practices, so you should get along with it in your projects from onwards.
 
 This `git` commands [cheatsheet](https://github.github.com/training-kit/downloads/github-git-cheat-sheet.pdf) is recommended.
