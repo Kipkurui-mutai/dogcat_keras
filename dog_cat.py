@@ -21,7 +21,7 @@ class DogCat(object):
             # classifier
             Flatten(),
             Dense(64, activation='relu'),
-            Dropout(0.25),
+            Dropout(0.5),
             Dense(2, activation='softmax'),
         ])
         self.optim = optimizers.SGD(lr=1e-3, decay=1e-6, momentum=0.9, nesterov=True)
